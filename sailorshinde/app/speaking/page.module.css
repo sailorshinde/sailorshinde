@@ -1,0 +1,155 @@
+.hero {
+  min-height: 60vh;
+  position: relative;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3rem 4rem;
+  overflow: hidden;
+}
+.heroBg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #0a1830, #0f2655 60%, #071020);
+  z-index: 0;
+}
+.heroOverlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(8,16,30,0.9) 0%, rgba(8,16,30,0.4) 100%);
+}
+.heroBar {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; z-index: 2;
+  background: linear-gradient(to bottom, transparent 10%, var(--gold) 35%, var(--gold) 75%, transparent);
+}
+.heroContent { position: relative; z-index: 3; max-width: 700px; }
+.kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.kicker::before { content: ''; display: block; width: 28px; height: 2px; background: var(--gold); }
+.title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.9;
+  color: white; margin-bottom: 1rem;
+}
+.title span { color: var(--gold); }
+.sub {
+  font-size: 1rem; font-weight: 300;
+  color: rgba(255,255,255,0.55); line-height: 1.7;
+  max-width: 520px; margin-bottom: 2.5rem;
+}
+.heroBtns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+/* Stats bar */
+.statsBar {
+  background: var(--cobalt-deep);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.statItem {
+  padding: 1.5rem 2rem;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.statItem:last-child { border-right: none; }
+.statN {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  color: var(--gold); display: block;
+  margin-bottom: 0.25rem;
+}
+.statL {
+  font-size: 0.7rem; font-weight: 400;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Topics */
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+}
+.topicCard {
+  background: var(--off);
+  border: 1px solid var(--g200);
+  padding: 1.8rem;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.topicCard::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.topicCard:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+.topicCard:hover::before { transform: scaleX(1); }
+.topicCard h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.02em;
+  color: var(--ink); margin-bottom: 0.8rem; line-height: 1.2;
+}
+.topicCard p {
+  font-size: 0.88rem; font-weight: 300;
+  line-height: 1.7; color: var(--g600);
+}
+
+/* Audiences */
+.audienceGrid {
+  display: flex; gap: 0.8rem; flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.audienceTag {
+  padding: 0.6rem 1.2rem;
+  background: var(--white);
+  border: 1.5px solid var(--cobalt);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--cobalt);
+}
+
+/* Form */
+.form { max-width: 700px; }
+.formRow {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin-bottom: 1rem;
+}
+.formGroup {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.formGroup label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+.formGroup input,
+.formGroup textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.8rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; font-weight: 300;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+.formGroup input::placeholder,
+.formGroup textarea::placeholder { color: rgba(255,255,255,0.2); }
+.formGroup input:focus,
+.formGroup textarea:focus { border-color: var(--gold); }
+
+@media (max-width: 960px) {
+  .hero { padding: 0 1.5rem 3rem; }
+  .statsBar { grid-template-columns: repeat(2, 1fr); }
+  .topicGrid { grid-template-columns: 1fr; }
+  .formRow { grid-template-columns: 1fr; }
+}

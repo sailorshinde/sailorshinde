@@ -1,0 +1,67 @@
+.footer {
+  background: var(--ink);
+  color: white;
+  padding: 4rem 3rem 2rem;
+}
+.inner { max-width: 1100px; margin: 0 auto; }
+
+.top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 2rem;
+}
+
+.quote {
+  font-family: 'Cormorant', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.sub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.col h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.col a {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color 0.2s;
+}
+.col a:hover { color: var(--gold); }
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bottom p {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+}
+
+@media (max-width: 960px) {
+  .footer { padding: 3rem 1.5rem 2rem; }
+  .top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}

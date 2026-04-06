@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,800;0,900;1,300;1,700;1,800;1,900&family=DM+Sans:wght@300;400;500;600&family=Cormorant:ital@1&display=swap');
+
+:root {
+  --cobalt:      #1B4FBF;
+  --cobalt-deep: #0F2E7A;
+  --cobalt-lt:   #2E66D9;
+  --cobalt-pale: #EBF0FB;
+  --gold:        #E8B94A;
+  --gold-lt:     #F2CE72;
+  --gold-dark:   #B8901A;
+  --ink:         #0C1017;
+  --white:       #FFFFFF;
+  --off:         #F7F6F2;
+  --g100:        #EEEDE8;
+  --g200:        #DDDBD2;
+  --g400:        #9E9A8E;
+  --g600:        #5C5950;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--off);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Shared section styles ── */
+.sec { padding: 5.5rem 3rem; }
+.sec-inner { max-width: 1100px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--cobalt);
+}
+.eyebrow.on-dark { color: var(--gold); }
+.eyebrow.on-dark::before { background: var(--gold); }
+
+.sec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  line-height: 0.95;
+  margin-bottom: 1rem;
+}
+.sec-title.on-dark { color: white; }
+.sec-title em { font-style: italic; font-weight: 800; color: var(--cobalt); }
+.sec-title.on-dark em { color: var(--gold); }
+
+.sec-body {
+  font-size: 0.96rem;
+  font-weight: 300;
+  line-height: 1.78;
+  color: var(--g600);
+  max-width: 580px;
+  letter-spacing: 0.01em;
+}
+.sec-body.on-dark { color: rgba(255,255,255,0.45); }
+.sec-body strong { font-weight: 600; color: var(--ink); }
+.sec-body.on-dark strong { color: rgba(255,255,255,0.85); }
+
+/* ── Buttons ── */
+.btn-gold {
+  padding: 0.85rem 2rem;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+.btn-outline-w {
+  padding: 0.85rem 2rem;
+  background: transparent;
+  color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  display: inline-block;
+}
+.btn-outline-w:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+/* ── Photo strip ── */
+.photo-strip {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.3fr;
+  height: 290px;
+  overflow: hidden;
+}
+.ps {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ps-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.5s ease;
+  background-size: cover;
+  background-position: center;
+}
+.ps:hover .ps-bg { transform: scale(1.05); }
+.ps-ov {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12,16,23,0.7) 0%, transparent 55%);
+}
+.ps::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.ps:hover::after { transform: scaleX(1); }
+.ps-lbl {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 1rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .sec { padding: 4rem 1.5rem; }
+  .photo-strip { grid-template-columns: 1fr 1fr; height: 260px; }
+}
